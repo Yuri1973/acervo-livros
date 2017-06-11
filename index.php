@@ -115,46 +115,37 @@
                             </table>
                             </form></small>
                     </h2>
-                     
-                    <div id="carousel-example-generic" class="carousel slide">
-                                            
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="wall">
-                            <?php
-$xml = simplexml_load_file('acervo.xml');
-for ($i = 0; $i < $xml->count(); $i++) {
-    echo "<fieldset><div class=\"livros\"><p class=\"titulo\"> Título: </p><p>" . strval($xml->livro[$i]->titulo) . "</br></p>";
-    echo "<p class=\"isbn\"> ISBN: " . strval($xml->livro[$i]['ISBN']) . "</br></p>";
-    echo "<p class=\"edicao\"> Edição: " . strval($xml->livro[$i]->titulo['edicao']) . "</br></p>";
-    echo "<p class=\"categ\"> Categoria: " . strval($xml->livro[$i]->categoria) . "</br></p>";
-    echo "<p class=\"autor\"> Autores: ";
-    for ($j = 0; $j < $xml->livro[$i]->autores->count(); $j++) {
-        echo strval($xml->livro[$i]->autores[$j]->autor);
-        echo "(" . $xml->livro[$i]->autores[$j]->autor['nacionalidade'] . ")";
-    }
-    echo "<p class=\"valor\"> Preço: " . strval($xml->livro[$i]->preco) . "</br></p>";
-    echo "<p class=\"publ\"> Ano de Publicação: " . strval($xml->livro[$i]->anopub) . "</br></p>";
-    echo "<p class=\"editora\"> Editora: " . strval($xml->livro[$i]->editora) . "</br></p>";
-    echo "</div> <div class=\"foto\"><img src='Imagens\\" . strval($xml->livro[$i]->imagem) . "'></td>";
-    echo "<hr/></div></fieldset>";
-}
-?>
-                       </div>
-                        </div>
+
+                
+                    <?php
+                        $xml = simplexml_load_file('acervo.xml');
+                        for ($i = 0; $i < $xml->count(); $i++) {?>
+                            <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="card h-100">
+                            <?php echo "<fieldset><div class=\"livros\"><p class=\"titulo\"> Título: </p><p>" . strval($xml->livro[$i]->titulo) . "</br></p>";
+                            echo "<p class=\"isbn\"> ISBN: " . strval($xml->livro[$i]['ISBN']) . "</br></p>";
+                            echo "<p class=\"edicao\"> Edição: " . strval($xml->livro[$i]->titulo['edicao']) . "</br></p>";
+                            echo "<p class=\"categ\"> Categoria: " . strval($xml->livro[$i]->categoria) . "</br></p>";
+                            echo "<p class=\"autor\"> Autores: ";
+                            for ($j = 0; $j < $xml->livro[$i]->autores->count(); $j++) {
+                                echo strval($xml->livro[$i]->autores[$j]->autor);
+                                echo "(" . $xml->livro[$i]->autores[$j]->autor['nacionalidade'] . ")";
+                            }
+                            echo "<p class=\"valor\"> Preço: " . strval($xml->livro[$i]->preco) . "</br></p>";
+                            echo "<p class=\"publ\"> Ano de Publicação: " . strval($xml->livro[$i]->anopub) . "</br></p>";
+                            echo "<p class=\"editora\"> Editora: " . strval($xml->livro[$i]->editora) . "</br></p>";
+                            echo "</div> <div class=\"foto\"><img src='Imagens\\" . strval($xml->livro[$i]->imagem) . "'></td>";
+                            echo "<hr/></div></fieldset>";?>
+                       </div></div>
+                        <?php }
+                    ?>
+                                                              
                         
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
-                    
+                       
+                
                    
                     <hr class="tagline-divider">
-                    
+                  </div>  
                 </div>
             </div>
         </div>
@@ -175,13 +166,7 @@ for ($i = 0; $i < $xml->count(); $i++) {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+    
 
 </body>
 </html>
