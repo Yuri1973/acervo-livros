@@ -61,7 +61,7 @@
                         <a href="upload.php">Cadastrar Livros</a>
                     </li>
                     <li>
-                        <a href="emprestimos.php">Empréstimos</a>
+                        <a href="emprestimosfunc.php">Empréstimos</a>
                     </li>
                 </ul>
             </div>

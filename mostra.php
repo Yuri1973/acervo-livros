@@ -61,7 +61,7 @@
                         <a href="cadastro.php">Cadastrar Livros</a>
                     </li>
                     <li>
-                        <a href="emprestimos.php">Empréstimos</a>
+                        <a href="emprestimosfunc.php">Empréstimos</a>
                     </li>
                 </ul>
             </div>
@@ -113,23 +113,11 @@
                             </form></small>
                     </h2>
                      
-                    <div id="carousel-example-generic" class="carousel slide">
-                                            
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="wall">
+                    
+                            
                             <?= mostraquais(); ?>
-                       </div>
-                        </div>
                         
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
+                        
                     
                    
                     <hr class="tagline-divider">
@@ -155,12 +143,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 </html>

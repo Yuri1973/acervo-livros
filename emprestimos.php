@@ -61,7 +61,7 @@
                         <a href="upload.php">Cadastrar Livros</a>
                     </li>
                     <li>
-                        <a href="emprestimos.html">Empréstimos</a>
+                         <a href="emprestimosfunc.php">Empréstimos</a>
                     </li>
                 </ul>
             </div>
@@ -82,7 +82,7 @@
                     <hr>
                 </div>
                 <div class="col-md-6">
-                   <form class= "formulario" method="post" enctype="multipart/form-data" action="funcaoemprestimo.php">
+                   <form class= "formulario" method="POST" enctype="multipart/form-data" action="emprestimosfunc.php">
         
         <table class="emprestimos">
 
@@ -90,19 +90,18 @@
             <tr><td><label>Nome:<br><input type="text" name="nome" value="" required/></label><br><br></td>
             <td><label>Livro Emprestado:<br><input type="text" name="livroemp" value="" required/></label><br><br></td></tr>
            
-            <tr><td><label>Telefone:<br><input type="tel" name="nome" value=""  placeholder="(00)00000-0000" required pattern="^\(?\d{2}\)\d{5}[-\s]\d{4}.*?$" /></label><br><br></td>            
-            <td><label>Email:<br><input type="text" name="edicao" value="" required/></label><br><br></td></tr>
-            <tr><td><label>Data empréstimo:<br><input type="date" name="dataemp" value="" required/></label><br><br></td>
-            <td><label>Data para devolução <br><input type="date" name="" value=""required/></label><br><br></td></tr>
+            <tr><td><label>Telefone:<br><input type="text" name="telefone" value=""  placeholder="(00)00000-0000" required pattern="^\(?\d{2}\)\d{5}[-\s]\d{4}.*?$" /></label><br><br></td>            
+            <td><label>Email:<br><input type="text" name="email" value="" required/></label><br><br></td></tr>
+            <tr><td><label>Data empréstimo:<br><input type="date" name="dtemp" value="" required/></label><br><br></td>
+            <td><label>Data para devolução <br><input type="date" name="dtdev" value=""required/></label><br><br></td></tr>
         </table>
             <div class="botoes2">
-                <input class="cadastrar" type="submit" value="Cadastrar" name="funcao"/>
+                <input class="cadastrar" type="submit" value="Emprestar" name="funcao"/>
                 </div>
+				</form>
                 <div class="clearfix"></div>
             </div>
         </div>
-
-     
     <!-- /.container -->
 
     <footer>

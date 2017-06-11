@@ -49,9 +49,10 @@ if (isset($_POST['funcao']) && $_POST['funcao'] == "Cadastrar") {
     $livro->addChild('preco', $_POST['preco']);
     $livro->addChild('anopub', $_POST['pub']);
     $livro->addChild('editora', $_POST['editora']);
+	
     
     file_put_contents("acervo.xml", $xml->asXML());
-}
+
 $isbn          = $_REQUEST['ISBN'];
 $titulo        = $_REQUEST['titulo'];
 $edicao        = $_REQUEST['edicao'];
@@ -61,16 +62,14 @@ $nacionalidade = $_REQUEST['nacionalidade'];
 $preco         = $_REQUEST['preco'];
 $anopub        = $_REQUEST['pub'];
 $editora       = $_REQUEST['editora'];
-$situacao      = null;
 
-$conexao = mysql_connect('localhost', 'root', '', 'acervo');
-if ($conexao) {
-    $sql = "INSERT INTO " . "livros (isbn, titulo, edicao, categoria, autor, nacionalidade, preco, anopub, editora, situacao) " . "VALUES ('$isbn', '$titulo', '$edicao', '$categoria', '$autor', '$nacionalidade', '$preco', '$anopub', '$editora' , '$situacao')";
-    mysql_select_db('acervo');
+$conexao = mysql_connect('localhost', 'root');
+
+if (mysql_select_db('acervo')){
+    $sql = "INSERT INTO " . "livros (isbn, titulo, edicao, categoria, autor, nacionalidade, preco, anopub, editora) " . "VALUES ('$isbn', '$titulo', '$edicao', '$categoria', '$autor', '$nacionalidade', '$preco', '$anopub', '$editora')";
     mysql_query($sql);
 } else {
-    $con = mysql_connect('localhost', 'root');
-    mysql_query("CREATE DATABASE acervo", $con);
+    mysql_query("CREATE DATABASE acervo", $conexao);
     mysql_select_db('acervo');
     $criar = "CREATE TABLE livros(
 isbn varchar(20) NOT NULL,
@@ -82,12 +81,22 @@ nacionalidade varchar (20) NOT NULL,
 preco varchar (20) NOT NULL,
 anopub varchar (20) NOT NULL,
 editora varchar (20) NOT NULL,
-situacao varchar (20) NOT NULL,
 PRIMARY KEY (titulo)
 )";
+$criar2= "CREATE TABLE emprestimos(
+nome varchar(20) NOT NULL,
+livroemp varchar (50) NOT NULL,
+telefone varchar (20) NOT NULL,
+email varchar (20) NOT NULL,
+dataemp date  ,
+datadev date  ,
+PRIMARY KEY (livroemp)
+)";
     mysql_query($criar);
-    $sql = "INSERT INTO " . "livros (isbn, titulo, edicao, categoria, autor, nacionalidade, preco, anopub, editora, situacao) " . "VALUES ('$isbn', '$titulo', '$edicao', '$categoria', '$autor', '$nacionalidade', '$preco', '$anopub', '$editora' , '$situacao')";
+	mysql_query($criar2);
+	
+    $sql = "INSERT INTO " . "livros (isbn, titulo, edicao, categoria, autor, nacionalidade, preco, anopub, editora) " . "VALUES ('$isbn', '$titulo', '$edicao', '$categoria', '$autor', '$nacionalidade', '$preco', '$anopub', '$editora')";
     mysql_query($sql);
-    
+}
 }
 ?> 
