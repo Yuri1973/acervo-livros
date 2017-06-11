@@ -233,7 +233,12 @@ footer p {
     background-clip: padding-box;
  
 }
-
+.foto, img{
+    max-width:300px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+}
 
 
 
