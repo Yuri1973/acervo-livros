@@ -97,7 +97,13 @@
         </table>
             <div class="botoes2">
                 <input class="cadastrar" type="submit" value="Emprestar" name="funcao"/>
+				
                 </div>
+				</form>
+				<form class= "formulario" method="POST" enctype="multipart/form-data" action="emprestimosfunc.php">
+				<div class="botoes2">
+				<input class="cadastrar" type="submit" value="Enviar emails" name="funcao"/>
+				</div>
 				</form>
                 <div class="clearfix"></div>
             </div>
