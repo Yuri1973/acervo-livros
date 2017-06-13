@@ -21,12 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+   
 
 </head>
 
@@ -49,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Acervo</a>
+                <a class="navbar-brand" href="index.php">Acervo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,10 +53,10 @@
                         <a href="index.php">Ver Livros</a>
                     </li>
                     <li>
-                        <a href="upload.php">Cadastrar Livros</a>
+                        <a href="cadastro.php">Cadastrar Livros</a>
                     </li>
                     <li>
-                        <a href="emprestimosfunc.php">Empréstimos</a>
+                        <a href="emprestimos.php">Empréstimos</a>
                     </li>
                 </ul>
             </div>
@@ -81,7 +76,7 @@
 
                 <h2 class="brand-before">
                         <small><form class="pesquisar" name="mostrar" method="POST" action= "funcaomostrar.php">
-                            <table ">
+                            <table >
                             
                             <!--pesquisa por preço-->
                                 <tr>
@@ -103,7 +98,7 @@
                                         <option value="fantasia">Fantasia </option>
                                         <option value="terror">Terror </option>
                                         <option value="suspense">Suspense </option>
-                                        <option value="infatil">Infantil </option>
+                                        <option value="infantil">Infantil </option>
                                         <option value="didatico">Didático</option>
                                         <option value="autoajuda">Auto Ajuda </option>
                                         <option value="biografia">Biografia </option>
@@ -122,7 +117,8 @@
                         for ($i = 0; $i < $xml->count(); $i++) {?>
                             <div class="col-md-4 mb-4 mb-md-0">
                             <div class="card h-100">
-                            <?php echo "<fieldset><div class=\"livros\"><p class=\"titulo\"> Título: </p><p>" . strval($xml->livro[$i]->titulo) . "</br></p>";
+                            <?php echo "<div class=\"foto\"><img src='Imagens\\" . strval($xml->livro[$i]->imagem) . "'></td>";
+							echo"</div><div class=\"livros\"><p class=\"titulo\"><strong>" . strval($xml->livro[$i]->titulo) . "</strong></br></p>";
                             echo "<p class=\"isbn\"> ISBN: " . strval($xml->livro[$i]['ISBN']) . "</br></p>";
                             echo "<p class=\"edicao\"> Edição: " . strval($xml->livro[$i]->titulo['edicao']) . "</br></p>";
                             echo "<p class=\"categ\"> Categoria: " . strval($xml->livro[$i]->categoria) . "</br></p>";
@@ -131,18 +127,15 @@
                                 echo strval($xml->livro[$i]->autores[$j]->autor);
                                 echo "(" . $xml->livro[$i]->autores[$j]->autor['nacionalidade'] . ")";
                             }
-                            echo "<p class=\"valor\"> Preço: " . strval($xml->livro[$i]->preco) . "</br></p>";
+                            echo "<p class=\"valor\"> Preço R$: " . strval($xml->livro[$i]->preco) . "</br></p>";
                             echo "<p class=\"publ\"> Ano de Publicação: " . strval($xml->livro[$i]->anopub) . "</br></p>";
                             echo "<p class=\"editora\"> Editora: " . strval($xml->livro[$i]->editora) . "</br></p>";
-                            echo "</div> <div class=\"foto\"><img src='Imagens\\" . strval($xml->livro[$i]->imagem) . "'></td>";
-                            echo "<hr/></div></fieldset>";?>
+                            echo "<hr/></div>";?>
                        </div></div>
                         <?php }
                     ?>
                                                               
-                        
-                       
-                
+  
                    
                     <hr class="tagline-divider">
                   </div>  
@@ -155,7 +148,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; 2017</p>
                 </div>
             </div>
         </div>

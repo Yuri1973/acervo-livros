@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -9,33 +8,29 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Acervo - Cadastro</title>
+    <title>Acervo</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+   
 
 </head>
 
 <body>
 
-    <ul class="titulo"> 
+ <ul class="titulo"> 
     <li><div class="brand">Acervo Pessoal</div></li>
     <li><img class="livro" src="img/livro.png"></li>
-    </ul> 
+ </ul>  
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -49,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
+                <a class="navbar-brand" href="index.php">Acervo</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,10 +53,10 @@
                         <a href="index.php">Ver Livros</a>
                     </li>
                     <li>
-                        <a href="upload.php">Cadastrar Livros</a>
+                        <a href="cadastro.php">Cadastrar Livros</a>
                     </li>
                     <li>
-                         <a href="emprestimosfunc.php">Empréstimos</a>
+                        <a href="emprestimos.php">Empréstimos</a>
                     </li>
                 </ul>
             </div>
@@ -88,33 +83,45 @@
 
             
             <tr><td><label>Nome:<br><input type="text" name="nome" value="" required/></label><br><br></td>
-            <td><label>Livro Emprestado:<br><input type="text" name="livroemp" value="" required/></label><br><br></td></tr>
+            <td><label>Livro Emprestado:<br><select name="livroemp">
+		<?php
+			$con = mysql_connect('localhost', 'root') or die('Não foi possível conectar');
+			mysql_select_db("acervo", $con);
+			$result = mysql_query('SELECT * FROM livros');
+
+			while ($row = mysql_fetch_array($result)){
+				$livro = $row['titulo'];
+				echo "<option value=" . $livro . ">" . $livro . "</option>";
+				}
+		?>
+
+	</select></label><br><br></td></tr>
            
             <tr><td><label>Telefone:<br><input type="text" name="telefone" value=""  placeholder="(00)00000-0000" required pattern="^\(?\d{2}\)\d{5}[-\s]\d{4}.*?$" /></label><br><br></td>            
             <td><label>Email:<br><input type="text" name="email" value="" required/></label><br><br></td></tr>
             <tr><td><label>Data empréstimo:<br><input type="date" name="dtemp" value="" required/></label><br><br></td>
             <td><label>Data para devolução <br><input type="date" name="dtdev" value=""required/></label><br><br></td></tr>
-        </table>
+        
             <div class="botoes2">
-                <input class="cadastrar" type="submit" value="Emprestar" name="funcao"/>
+                <tr> <td> <input class="cadastrar" type="submit" value="Emprestar" name="funcao"/> </td>
 				
                 </div>
 				</form>
-				<form class= "formulario" method="POST" enctype="multipart/form-data" action="emprestimosfunc.php">
-				<div class="botoes2">
-				<input class="cadastrar" type="submit" value="Enviar emails" name="funcao"/>
+				<form class= "formulario" method="POST" enctype="multipart/form-data" action="veremprestimos.php">
+				<td> <input class="cadastrar" type="submit" value="Ver empréstimos" name="funcao"/> </td> </tr>
 				</div>
 				</form>
+				</table>
                 <div class="clearfix"></div>
             </div>
         </div>
     <!-- /.container -->
 
-    <footer>
+   <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; 2017</p>
                 </div>
             </div>
         </div>

@@ -72,53 +72,42 @@
             <div class="box">
 
                 <div class="col-lg-12 text-center">
-                <h1 class="brand-name">Seu Acervo</h1>
+                <h1 class="brand-name">Seus Empréstimos</h1>
 
-                <h2 class="brand-before">
-                        <small>
-						<form class="pesquisar" name="mostrar" method="POST" action= "funcaomostrar.php">
-                            <table ">
-                            <!--pesquisa por preço-->
-                                <tr><label> 
-                                    <td class="pesquisapreco"><select name="pesqp"> 
-                                        <option value="30"> Menores de 30 </option>
-                                        <option value="30_50"> Entre 30 e 50 </option>
-                                        <option value="50"> Maiores de 50 </option>
-                                    </select></td>
-                                    <td class="pesquisapreco"> <input class="preco" type="submit" value="Mostrar por preço" name="funcao" /></td>
-                                </label>
-                                <!--pesquisa por categoria-->
-                                <label>
-                                    <td class="pesquisacateg"><select name="pesqcat">
-                                        <option value="romance">Romance </option>
-                                        <option value="ficcao">Ficção </option>
-                                        <option value="fantasia">Fantasia </option>
-                                        <option value="terror">Terror </option>
-                                        <option value="suspense">Suspense </option>
-                                        <option value="infatil">Infantil </option>
-                                        <option value="didatico">Didático</option>
-                                        <option value="autoajuda">Auto Ajuda </option>
-                                        <option value="biografia">Biografia </option>
-                                        <option value="religiao">Religião </option>
-                                    </select></td>
-                                    <td class="pesquisacateg"><input class="categoria" type="submit" value="Mostrar por categoria"  name="funcao"/></td>
-                                    </label>
-                                    <td class="vertodos"> <input class="todos" type="submit" value="Ver todos" name="funcao" /></td>
-                                    </tr>
-                            </table>
-                            </form>
-							</small>
-                    </h2>
-                     
-                    
-                            
-                            <?= mostraquais(); ?>
+                    <?php
+$conexao = mysql_connect('localhost', 'root');
+$con = mysql_connect('localhost', 'root') or die('Não foi possível conectar');
+mysql_select_db("acervo", $con);
+$result = mysql_query('SELECT * FROM emprestimos');
+
+while ($row = mysql_fetch_array($result)) {
+	$nome = $row['nome'];
+	$livro = $row['livroemp'];
+	$tel = $row['telefone'];
+	$email = $row['email'];
+	$data = $row['dataemp'];
+	$data2 = $row['datadev'];
+?><div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card h-100"><?php
+	echo "<table>";
+	echo "<tr> <td> Nome: " . $nome . "</td> </tr>";
+	echo "<tr> <td> Livro Emprestado: " . $livro . "</td> </tr>";
+	echo "<tr> <td> Telefone: " . $tel . "</td> </tr>";
+	echo "<tr> <td> Email: " . $email . "</td> </tr>";
+	echo "<tr> <td> Data de Empréstimo: " . $data . "</td> </tr>";
+	echo "<tr> <td> Data de devolução: " . $data2 . "</td> </tr>";
+	echo "</table>";
+?></div>
+                    </div><?php
+} ?>
+                       <form class="pesquisar" name="mostrar" method="POST" action= "emprestimosfunc.php">
+						 <input class="enviar" type="submit" value="Enviar emails" name="funcao" />
+						 <input class="enviar" type="submit" value="Atualizar" name="funcao" />
+						 </form>
+					   </div></div>
                         
-                        
-                    
-                   
                     <hr class="tagline-divider">
-                    
+                  </div>  
                 </div>
             </div>
         </div>
@@ -139,7 +128,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+    
 
 </body>
 </html>
